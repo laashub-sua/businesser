@@ -10,7 +10,6 @@ project_config_dir = os.path.join("configs")
 
 
 def load():
-    print('load')
     data = {}
     for item in os.listdir(project_config_dir):
         project_config_file_name = item[:-4]

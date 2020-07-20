@@ -21,7 +21,6 @@ def auto_registration_flask_blueprint(blueprint_path, module_name):
         cur_module_name = cur_module_name[:-3]
         target_dynamic_module = importlib.import_module(cur_module_name)
         if hasattr(target_dynamic_module, 'app'):
-            print(target_dynamic_module.app)
             app.register_blueprint(target_dynamic_module.app)
 
 
