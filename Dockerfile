@@ -10,8 +10,8 @@ RUN python3 -m compileall -b .
 RUN find . -name "*.py" |xargs rm -rf
 # 声明
 MAINTAINER tristan "https://github.com/laashub-sua/businesser"
-VOLUME /usr/src/app/configs/application.yml
-VOLUME /usr/src/app/data/service_component/database_oracle/registration.yaml
-VOLUME /usr/src/app/data/service_component/database_oracle/data
+#VOLUME /usr/src/app/configs/application.yml
+#VOLUME /usr/src/app/data/service_component/database_oracle/registration.yaml
+#VOLUME /usr/src/app/data/service_component/database_oracle/data
 EXPOSE 5000
 CMD [ "python", "./setup.pyc" ]
