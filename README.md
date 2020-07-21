@@ -1,5 +1,7 @@
 [原文地址](https://github.com/laashub-sua/laas-sua/blob/master/docs/businesser.md)
 
+[更多更详细文档: 点击docs](docs)
+
 businesser
 
 业务器
