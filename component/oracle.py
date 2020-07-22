@@ -8,11 +8,13 @@ import cx_Oracle
 from component import logging_ as logging
 from component import path
 
+cx_Oracle.init_oracle_client(
+    lib_dir=os.path.join(path.find_third_party_path(), 'instantclient_19_6'))
+
 
 class Oracle(object):
     def __init__(self, ip, port, instance, username, password):
-        cx_Oracle.init_oracle_client(
-            lib_dir=os.path.join(path.find_third_party_path(), 'instantclient_19_6'))
+
         tns = cx_Oracle.makedsn(ip, port, instance)
         self.connect = cx_Oracle.connect(username, password, tns)
         logging.info(tns)
