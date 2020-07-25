@@ -42,6 +42,12 @@ businesser
 
  本地域名指向多个主机上的docker容器
 
+# preview
+
+![img](docs/preview/0.0.1/postman_test_result.png)
+
+![img](docs/preview/0.0.1/efficiency_improvement.png)
+
 # standard
 
 -------------------------- 开发时:
