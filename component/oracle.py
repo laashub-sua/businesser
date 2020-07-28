@@ -10,10 +10,12 @@ from component import logging_ as logging
 from component import path
 
 operation_system_name = 'windows'
+instantclient_dir_name = 'instantclient_19_8'
 if platform.system() != "Windows":
     operation_system_name = 'linux'
+    instantclient_dir_name = 'instantclient_19_6'
 cx_Oracle.init_oracle_client(
-    lib_dir=os.path.join(path.find_third_party_path(), operation_system_name, 'instantclient_19_6'))
+    lib_dir=os.path.join(path.find_third_party_path(), operation_system_name, instantclient_dir_name))
 
 
 class Oracle(object):
