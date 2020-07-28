@@ -1,21 +1,17 @@
 """
 package the oracle operation
 """
-import os
 import platform
 
 import cx_Oracle
 
 from component import logging_ as logging
-from component import path
 
-operation_system_name = 'windows'
-instantclient_dir_name = 'instantclient_19_6'
-if platform.system() != "Windows":
-    operation_system_name = 'linux'
-    instantclient_dir_name = 'instantclient_19_8'
-cx_Oracle.init_oracle_client(
-    lib_dir=os.path.join(path.find_third_party_path(), operation_system_name, instantclient_dir_name))
+if platform.system() == "Windows":
+    cx_Oracle.init_oracle_client(
+        lib_dir=r'D:\program_files\oracle_client\windows\instantclient_19_6')
+else:
+    cx_Oracle.init_oracle_client()
 
 
 class Oracle(object):

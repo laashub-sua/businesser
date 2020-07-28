@@ -37,6 +37,16 @@ CMD [ "python", "./setup.pyc" ]
 安装docker
 
 ```
+mv -f /etc/yum.repos.d/CentOS-Base.repo.bak /etc/yum.repos.d/CentOS-Base.repo
+
+mv -f /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+yum install -y epel-release
+wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
+yum clean all
+yum makecache
+
+
 echo "install docker"
 curl -sSL get.docker.com | sh
 systemctl start docker.service
@@ -116,6 +126,19 @@ docker run -d --restart=always --name businesser -p 5000:5000 \
   -v /data/tristan/laashub-sua/businesser/data/service_component/database_oracle/registration.yaml:/usr/src/app/data/service_component/database_oracle/registration.yaml \
   -v /data/tristan/laashub-sua/businesser/data/service_component/database_oracle/data:/usr/src/app/data/tristan/laashub-sua/businesser/data/service_component/database_oracle/data \
   laashubsua/businesser
+```
+
+
+
+```
+docker stop businesser
+docker rm businesser
+docker run -it --restart=always --name businesser -p 5000:5000 \
+  -v /root:/usr/src/app/third_party/linux \
+  -v /data/tristan/laashub-sua/businesser/configs/application.yml:/usr/src/app/configs/application.yml \
+  -v /data/tristan/laashub-sua/businesser/data/service_component/database_oracle/registration.yaml:/usr/src/app/data/service_component/database_oracle/registration.yaml \
+  -v /data/tristan/laashub-sua/businesser/data/service_component/database_oracle/data:/usr/src/app/data/tristan/laashub-sua/businesser/data/service_component/database_oracle/data \
+  laashubsua/businesser bash
 ```
 
 查看日志
