@@ -263,7 +263,10 @@ sudo systemctl restart docker
 
 ```
 mkdir -p /data/tristan/laashub-sua/businesser && chmod 777 /data/tristan/laashub-sua/businesser
-docker run --name businesser laashub-sua/businesser
+
+rm -rf /data/tristan/laashub-sua/businesser/configs/application.yml /data/tristan/laashub-sua/businesser/data/service_component/database_oracle/registration.yaml
+
+docker run --name businesser laashubsua/businesser
 docker cp businesser:/usr/src/app/configs/application.yml /data/tristan/laashub-sua/businesser/configs/application.yml
 docker cp businesser:/usr/src/app/data/service_component/database_oracle/registration.yaml /data/tristan/laashub-sua/businesser/data/service_component/database_oracle/registration.yaml
 

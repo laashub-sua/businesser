@@ -18,9 +18,14 @@ def auto_registration_flask_blueprint(blueprint_path, module_name):
         if os.path.isdir(current_level_path):
             auto_registration_flask_blueprint(current_level_path, cur_module_name)
             continue
-        if not cur_module_name.endswith('.py') or not cur_module_name.endswith('.pyc'):
+        file_tag = None
+        if cur_module_name.endswith('.py'):
+            file_tag = '.py'
+        if cur_module_name.endswith('.pyc'):
+            file_tag = '.pyc'
+        if not file_tag:
             continue
-        cur_module_name = cur_module_name[:-3]
+        cur_module_name = cur_module_name[:(0 - len(file_tag))]
         target_dynamic_module = importlib.import_module(cur_module_name)
         if hasattr(target_dynamic_module, 'app'):
             app.register_blueprint(target_dynamic_module.app)
