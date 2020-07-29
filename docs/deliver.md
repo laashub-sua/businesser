@@ -104,15 +104,13 @@ sudo systemctl restart docker
 准备动作
 
 ```
-mkdir -p /data/tristan/laashub-sua/businesser && chmod 777 /data/tristan/laashub-sua/businesser
-
-rm -rf /data/tristan/laashub-sua/businesser/configs/application.yml /data/tristan/laashub-sua/businesser/data/service_component/database_oracle/registration.yaml
-
-docker run --name businesser laashubsua/businesser
-docker cp businesser:/usr/src/app/configs/application.yml /data/tristan/laashub-sua/businesser/configs/application.yml
-docker cp businesser:/usr/src/app/data/service_component/database_oracle/registration.yaml /data/tristan/laashub-sua/businesser/data/service_component/database_oracle/registration.yaml
+mkdir -p /data/tristan/laashub-sua/businesser/configs && chmod 777 /data/tristan/laashub-sua/businesser/configs
 
 mkdir -p /data/tristan/laashub-sua/businesser/data/service_component/database_oracle/data && chmod 777 /data/tristan/laashub-sua/businesser/data/service_component/database_oracle/data
+
+docker run --name businesser laashubsua/businesser
+docker cp businesser:/usr/src/app/configs /data/tristan/laashub-sua/businesser/configs
+docker cp businesser:/usr/src/app/data/service_component/database_oracle /data/tristan/laashub-sua/businesser/data/service_component/database_oracle
 ```
 
 实际使用
@@ -124,7 +122,7 @@ docker rmi laashubsua/businesser
 docker run -d --restart=always --name businesser -p 5000:5000 \
   -v /data/tristan/laashub-sua/businesser/configs/application.yml:/usr/src/app/configs/application.yml \
   -v /data/tristan/laashub-sua/businesser/data/service_component/database_oracle/registration.yaml:/usr/src/app/data/service_component/database_oracle/registration.yaml \
-  -v /data/tristan/laashub-sua/businesser/data/service_component/database_oracle/data:/usr/src/app/data/tristan/laashub-sua/businesser/data/service_component/database_oracle/data \
+  -v /data/tristan/laashub-sua/businesser/data/service_component/database_oracle/data/:/usr/src/app/data/service_component/database_oracle/data/ \
   laashubsua/businesser
 ```
 
@@ -139,6 +137,14 @@ docker run -it --restart=always --name businesser -p 5000:5000 \
   -v /data/tristan/laashub-sua/businesser/data/service_component/database_oracle/registration.yaml:/usr/src/app/data/service_component/database_oracle/registration.yaml \
   -v /data/tristan/laashub-sua/businesser/data/service_component/database_oracle/data:/usr/src/app/data/tristan/laashub-sua/businesser/data/service_component/database_oracle/data \
   laashubsua/businesser bash
+```
+
+
+
+```
+docker run -it laashubsua/businesser
+docker run -it --restart=always --name businesser -p 5000:5000 \
+  laashubsua/businesser
 ```
 
 查看日志
