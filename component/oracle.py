@@ -43,3 +43,4 @@ class Oracle(object):
             execute_result.append(execute_result_item)
         return execute_result
 
+

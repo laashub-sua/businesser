@@ -149,6 +149,8 @@ docker run -it --restart=always --name businesser -p 5000:5000 \
 
 
 ```
+docker stop $(docker ps -qa)
+docker rm $(docker ps -qa)
 docker run -it --name businesser laashubsua/businesser
 ```
 
