@@ -42,3 +42,4 @@ class Oracle(object):
                 execute_result_item[metadata_column_list[index].lower()] = row[index]
             execute_result.append(execute_result_item)
         return execute_result
+
