@@ -132,10 +132,9 @@ docker run -d --restart=always --name businesser -p 5000:5000 \
 docker stop businesser
 docker rm businesser
 docker run -it --restart=always --name businesser -p 5000:5000 \
-  -v /root:/usr/src/app/third_party/linux \
   -v /data/tristan/laashub-sua/businesser/configs/application.yml:/usr/src/app/configs/application.yml \
   -v /data/tristan/laashub-sua/businesser/data/service_component/database_oracle/registration.yaml:/usr/src/app/data/service_component/database_oracle/registration.yaml \
-  -v /data/tristan/laashub-sua/businesser/data/service_component/database_oracle/data:/usr/src/app/data/tristan/laashub-sua/businesser/data/service_component/database_oracle/data \
+  -v /data/tristan/laashub-sua/businesser/data/service_component/database_oracle/data/:/usr/src/app/data/service_component/database_oracle/data/ \
   laashubsua/businesser bash
 ```
 
