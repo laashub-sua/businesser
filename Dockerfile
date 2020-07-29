@@ -1,6 +1,6 @@
 FROM python:3.7
 # oracle client
-RUN ./docker/install-instantclient.sh
+RUN docker/install-instantclient.sh
 # app
 WORKDIR /usr/src/app
 RUN rm -rf *
