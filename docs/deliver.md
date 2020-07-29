@@ -146,6 +146,12 @@ docker run -it --restart=always --name businesser -p 5000:5000 \
   laashubsua/businesser
 ```
 
+
+
+```
+docker run -it --name businesser laashubsua/businesser
+```
+
 查看日志
 
 ```

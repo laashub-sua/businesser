@@ -8,11 +8,12 @@ COPY . .
 RUN chmod +x docker/install-instantclient.sh && ./docker/install-instantclient.sh
 # compile python
 RUN find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
-RUN python3 -m compileall -b .
-RUN find . -name "*.py" |xargs rm -rf
+#RUN python3 -m compileall -b .
+#RUN find . -name "*.py" |xargs rm -rf
 MAINTAINER tristan "https://github.com/laashub-sua/businesser"
 #VOLUME /usr/src/app/configs/application.yml
 #VOLUME /usr/src/app/data/service_component/database_oracle/registration.yaml
 #VOLUME /usr/src/app/data/service_component/database_oracle/data
 EXPOSE 5000
-CMD [ "python", "./setup.pyc" ]
+CMD [ "python", "./setup.py" ]
+#CMD [ "python", "./setup.pyc" ]
