@@ -151,7 +151,22 @@ docker run -it --restart=always --name businesser -p 5000:5000 \
 ```
 docker stop $(docker ps -qa)
 docker rm $(docker ps -qa)
-docker run -it --name businesser laashubsua/businesser
+docker rmi laashubsua/businesser
+docker pull laashubsua/businesser:0.0.4
+docker run -it --name businesser laashubsua/businesser:0.0.4
+docker run -it --name businesser laashubsua/businesser:0.0.4 bash
+
+docker tag laashubsua/businesser:0.0.4 laashubsua/businesser
+```
+
+
+
+```
+docker run -it --restart=always --name businesser -p 5000:5000 \
+  -v /data/tristan/laashub-sua/businesser/configs/application.yml:/usr/src/app/configs/application.yml \
+  -v /data/tristan/laashub-sua/businesser/data/service_component/database_oracle/registration.yaml:/usr/src/app/data/service_component/database_oracle/registration.yaml \
+  -v /data/tristan/laashub-sua/businesser/data/service_component/database_oracle/data/:/usr/src/app/data/service_component/database_oracle/data/ \
+  laashubsua/businesser bash
 ```
 
 查看日志

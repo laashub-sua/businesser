@@ -6,6 +6,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 # install oracle client
 RUN chmod +x docker/install-instantclient.sh && ./docker/install-instantclient.sh
+ENV LD_LIBRARY_PATH /opt/oracle/instantclient_19_8:$LD_LIBRARY_PATH
 # compile python
 RUN find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 #RUN python3 -m compileall -b .
